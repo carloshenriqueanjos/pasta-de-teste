@@ -1,7 +1,7 @@
 const btt = document.getElementById("butao");
 
 btt.onclick = () => {
-    const xhttp = XMLHttpRequest();
+    const xhttp = new XMLHttpRequest();
     xhttp.onload = () => {
         document.getElementById("demo").innerHTML = this.responseText;
     }
