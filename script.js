@@ -1,34 +1,10 @@
-const fName = document.getElementById("name");
-const bttSave = document.getElementById("bttSave");
+const btt = document.getElementById("butao");
 
-let Itens;
-let id;
-
-/*
-bttSave.onclick = () => {
-    if (fName == '') {
-        return
+btt.onclick = () => {
+    const xhttp = XMLHttpRequest();
+    xhttp.onload = () => {
+        document.getElementById("demo").innerHTML = this.responseText;
     }
-
-    if (id !== undefined) {
-        Itens[id].nome = fName.value;
-    }
-    else {
-        Itens.push({'nome': fName.value});
-    }
-
-    setItemDB()
-    loadItem()
-    id = undefined
+    xhttp.open("GET", "texto.txt", true);
+    xhttp.send();
 }
-*/
-
-function loadItem() {
-    Itens = getItemDB();
-    fName.value = '';
-}
-
-const getItemDB = () => JSON.parse(localStorage.getItem("TESTEAJAX")) ?? [];
-const setItemDB = () => localStorage.setItem("TESTEAJAX", JSON.stringify(Itens));
-
-loadItem();
