@@ -13,17 +13,20 @@
     </style>
 </head>
 <body>
-    <div class="divConteiner">
+    <p id="demo">TESTE DE BUSCA JAVASCRIPT...</p>
 
-        <div class="divHeader">
-            <h1>SITE TESTE!</h1>
-        </div>
+    <script>
 
-        <div class="demo">
-            <button type="button" id="butao">Click Aqui</button>
-        </div>
+        getText("texto.txt");
 
-    </div>
-    <script src="script.js"></script>
+        async function getText(file) {
+            let x = await fetch(file);
+            let y = await x.text();
+            document.getElementById("demo").innerHTML = y;
+        }
+
+    </script>
+
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>
