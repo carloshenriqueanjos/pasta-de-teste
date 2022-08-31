@@ -13,18 +13,18 @@
     </style>
 </head>
 <body>
-    <p id="demo">TESTE DE BUSCA JAVASCRIPT...</p>
+    <h1>WEB WORKER...</h1>
+    <p>Contando: <output id="demo"></output></p>
+    <button onclick="startWorker()">Começar</button>
+    <button onclick="stopWorker()">Terminar</button>
 
     <script>
+        let x;
 
-        getText("texto.txt");
-
-        async function getText(file) {
-            let x = await fetch(file);
-            let y = await x.text();
-            document.getElementById("demo").innerHTML = y;
+        function startWorker() {
+            
         }
-
+        
     </script>
 
     <!-- <script src="script.js"></script> -->
