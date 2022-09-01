@@ -14,20 +14,29 @@
 </head>
 <body>
 
-    <div id="demo">
-        <h1>TESTANDO AJAX...</h1>
-        <button type="button" onclick="loadDoc()">Load document</button>
+    <div>
+        <h1>API WEB WORKER...</h1>
+        <p>Contando: <output id="demo"></output></p>
+        <button type="button" onclick="startWorker()">Começar</button>
+        <button type="button" onclick="stopWorker()">Terminar</button>
     </div>
 
     <script>
 
-        function loadDoc() {
-            const xhttp = new XMLHttpRequest();
-            xhttp.onload = function() {
-                document.getElementById("demo").innerHTML = this.responseText;
+        let x;
+
+        function startWorker() {
+            if (typeof(x) == "undefined") {
+                x = new Worker("script.js");
             }
-            xhttp.open("GET", "texto.txt", true);
-            xhttp.send();
+            x.onmessage = function(event) {
+                document.getElementById("demo").innerHTML = event.data;
+            };
+        }
+
+        function stopWorker() {
+            x.terminate();
+            x = undefined;
         }
 
     </script>
