@@ -15,7 +15,7 @@
 
     async function getItem(file) {
         let x = await fetch(file);
-        let y = await x.Text();
+        let y = await x.text();
         document.getElementById("demo").innerHTML = y;
     }
 
