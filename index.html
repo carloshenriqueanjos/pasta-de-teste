@@ -4,41 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TESTE</title>
-    <style>
-        body {
-            text-align: center;
-            padding: 50px;
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-
-    <div>
-        <h1>API WEB WORKER...</h1>
-        <p>Contando: <output id="demo"></output></p>
-        <button type="button" onclick="startWorker()">Começar</button>
-        <button type="button" onclick="stopWorker()">Terminar</button>
-    </div>
-
-    <script>
-
-        let x;
-
-        function startWorker() {
-            if (typeof(x) == "undefined") {
-                x = new Worker("script.js");
-            }
-            x.onmessage = function(event) {
-                document.getElementById("demo").innerHTML = event.data;
-            };
-        }
-
-        function stopWorker() {
-            x.terminate();
-            x = undefined;
-        }
-
-    </script>
+    <div id="demo"></div>
 </body>
+<script>
+
+    getItem("cadastro.sql")
+
+    async function getItem(file) {
+        let x = await fetch(file);
+        let y = await x.Text();
+        document.getElementById("demo").innerHTML = y;
+    }
+
+</script>
 </html>
